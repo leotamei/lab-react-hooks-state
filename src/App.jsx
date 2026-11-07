@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import DarkModeToggle from './components/DarkModeToggle';
-import ProductList from './components/ProductList';
+import ProductList, { sampleProducts } from './components/ProductList';
 import Cart from './components/Cart';
-
-const initialProducts = [
-  { id: 1, name: 'Milk', category: 'Dairy' },
-  { id: 2, name: 'Bread', category: 'Bakery' },
-  { id: 3, name: 'Cheese', category: 'Dairy' },
-  { id: 4, name: 'Apples', category: 'Produce' }
-];
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -30,8 +23,8 @@ export default function App() {
   };
 
   const filteredProducts = selectedCategory === 'All'
-    ? initialProducts
-    : initialProducts.filter((product) => product.category === selectedCategory);
+    ? sampleProducts
+    : sampleProducts.filter((product) => product.category === selectedCategory);
 
   return (
     <div style={{
@@ -53,7 +46,7 @@ export default function App() {
         <option value="All">All</option>
         <option value="Dairy">Dairy</option>
         <option value="Bakery">Bakery</option>
-        <option value="Produce">Produce</option>
+        <option value="Fruits">Fruits</option>
       </select>
 
       <ProductList products={filteredProducts} onAddToCart={handleAddToCart} />
